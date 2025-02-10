@@ -1,4 +1,5 @@
 # Medical-Chatbot-
+![Image](https://github.com/user-attachments/assets/0cb3c6c5-9497-4385-8fd9-4ecc6bd82e33)
 
 End-to-End Medical Chatbot Using Generative AI
 
