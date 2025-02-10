@@ -1,0 +1,168 @@
+/* Gradient Background - Soft Pink & Lavender */
+body, html {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(to right, #fce4ec, #e1bee7, #d1c4e9);
+}
+
+/* Chat Box */
+.chat {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.card {
+    height: 500px;
+    border-radius: 15px !important;
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    box-shadow: 0px 5px 15px rgba(128, 128, 128, 0.2);
+}
+
+/* Header */
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+    background: linear-gradient(45deg, #f48fb1, #ce93d8);
+    border-bottom: 0 !important;
+}
+
+.user_info span {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.user_info p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Chat Body */
+.msg_card_body {
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* 💬 Chat Messages (Now Darker) */
+.msg_cotainer {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 15px;
+    background-color: #4a148c;  /* Dark Purple */
+    padding: 10px;
+    position: relative;
+    color: white;
+    max-width: 75%;
+    word-wrap: break-word;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.msg_cotainer_send {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    border-radius: 15px;
+    background-color: #880e4f;  /* Dark Pink */
+    padding: 10px;
+    position: relative;
+    color: white;
+    max-width: 75%;
+    word-wrap: break-word;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Timestamps */
+.msg_time, .msg_time_send {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    bottom: -15px;
+}
+
+.msg_time {
+    left: 0;
+}
+
+.msg_time_send {
+    right: 0;
+}
+
+/* Input Area */
+.card-footer {
+    border-radius: 0 0 15px 15px !important;
+    border-top: 0 !important;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.type_msg {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #f48fb1;
+    color: #6a1b9a;
+    height: 50px !important;
+    border-radius: 20px;
+    padding-left: 15px;
+}
+
+.type_msg:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+/* Buttons */
+.send_btn {
+    border-radius: 15px !important;
+    background: linear-gradient(45deg, #f48fb1, #ce93d8);
+    color: white !important;
+    border: 0 !important;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.send_btn:hover {
+    background: linear-gradient(45deg, #f06292, #ba68c8);
+}
+
+/* User Profile */
+.user_img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.user_img_msg {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.img_cont {
+    position: relative;
+    height: 50px;
+    width: 50px;
+}
+
+.img_cont_msg {
+    height: 40px;
+    width: 40px;
+}
+
+/* Online Status */
+.online_icon {
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    background-color: #4cd137;
+    border-radius: 50%;
+    bottom: 0.2em;
+    right: 0.4em;
+    border: 1.5px solid white;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 576px) {
+    .contacts_card {
+        margin-bottom: 15px !important;
+    }
+}
