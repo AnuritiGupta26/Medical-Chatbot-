@@ -2,7 +2,7 @@
 from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
 from langchain_community.embeddings import HuggingFaceEmbeddings
  # Updated import
-import pinecone
+from langchain_pinecone import PineconeVectorStore
 from dotenv import load_dotenv
 import os
 
