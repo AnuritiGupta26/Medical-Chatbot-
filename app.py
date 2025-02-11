@@ -8,6 +8,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from dotenv import load_dotenv
 import os
 
+# Initialize Flask App
 app = Flask(__name__)
 
 # Load environment variables
@@ -20,6 +21,16 @@ if not PINECONE_API_KEY:
     raise ValueError("PINECONE_API_KEY is missing in environment variables.")
 if not GROQ_API_KEY:
     raise ValueError("GROQ_API_KEY is missing in environment variables.")
+
+# Check if running locally (Windows) or on Render (Linux)
+if os.name == "nt":  # Windows (Local)
+    try:
+        import pinecone_plugin_inference
+        print("Running locally: pinecone_plugin_inference loaded")
+    except ImportError:
+        print("Warning: pinecone-plugin-inference is not installed locally!")
+else:
+    print("Running on Render: Using main Pinecone package")
 
 # Load Hugging Face embeddings
 embeddings = download_hugging_face_embeddings()
@@ -75,7 +86,6 @@ def chat():
     # Ensure JSON response is correctly formatted
     return jsonify(answer=response["answer"])
 
-
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))  # Render assigns a dynamic port
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port)  # Use Flask's built-in server for local testing
