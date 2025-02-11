@@ -76,21 +76,5 @@ def chat():
     return jsonify(answer=response["answer"])
 
 
-app = Flask(__name__)
-
-# Check if running locally (Windows) or on Render (Linux)
-if os.name == "nt":  # Windows (Local)
-    try:
-        import pinecone_plugin_inference
-        print("Running locally: pinecone_plugin_inference loaded")
-    except ImportError:
-        print("Warning: pinecone-plugin-inference is not installed locally!")
-else:
-    print("Running on Render: Using main Pinecone package")
-
-@app.route('/')
-def home():
-    return "Medical Chatbot Running!"
-
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port= 8080, debug= True)
