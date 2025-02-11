@@ -1,6 +1,7 @@
 #if we want to add something in the book we can 
-from langchain_community.document_loaders import PyPDFLoader  # Updated import
-from langchain_community.embeddings import HuggingFaceEmbeddings  # Updated import
+from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
+from langchain_community.embeddings import HuggingFaceEmbeddings
+ # Updated import
 import pinecone
 from dotenv import load_dotenv
 import os
