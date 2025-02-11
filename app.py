@@ -22,27 +22,21 @@ if not PINECONE_API_KEY:
 if not GROQ_API_KEY:
     raise ValueError("GROQ_API_KEY is missing in environment variables.")
 
-# Check if running locally (Windows) or on Render (Linux)
-if os.name == "nt":  # Windows (Local)
-    try:
-        import pinecone_plugin_inference
-        print("Running locally: pinecone_plugin_inference loaded")
-    except ImportError:
-        print("Warning: pinecone-plugin-inference is not installed locally!")
-else:
-    print("Running on Render: Using main Pinecone package")
-
 # Load Hugging Face embeddings
-embeddings = download_hugging_face_embeddings()
+try:
+    embeddings = download_hugging_face_embeddings()
+except Exception as e:
+    raise RuntimeError(f"Error downloading embeddings: {e}")
 
 # Define Pinecone index name
 index_name = "medicalbot"
 
 # Load Pinecone vector store
-docsearch = PineconeVectorStore.from_existing_index(index_name=index_name, embedding=embeddings)
-
-# Define retriever
-retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k": 3})
+try:
+    docsearch = PineconeVectorStore.from_existing_index(index_name=index_name, embedding=embeddings)
+    retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k": 3})
+except Exception as e:
+    raise RuntimeError(f"Error initializing Pinecone: {e}")
 
 # Initialize ChatGroq
 llm = ChatGroq(api_key=GROQ_API_KEY, temperature=0.4, max_tokens=500)
@@ -83,9 +77,16 @@ def chat():
 
     print("Response:", response["answer"])
 
-    # Ensure JSON response is correctly formatted
     return jsonify(answer=response["answer"])
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))  # Render assigns a dynamic port
-    app.run(host="0.0.0.0", port=port)  # Use Flask's built-in server for local testing
+
+    # Use Waitress in production (on Render), Flask for local testing
+    if os.getenv("RENDER") == "true":
+        from waitress import serve
+        print(f"Running on Render with Waitress at port {port}...")
+        serve(app, host="0.0.0.0", port=port)
+    else:
+        print(f"Running locally at http://127.0.0.1:{port}...")
+        app.run(host="0.0.0.0", port=port, debug=True)
