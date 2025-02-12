@@ -9,7 +9,7 @@ langchain-pinecone
 langchain_community
 langchain_experimental
 langchain-huggingface
-langchain_groq  
+langchain_groq==0.2.4
 gunicorn
 
 
