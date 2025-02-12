@@ -1,16 +1,16 @@
-﻿
-sentence-transformers==2.2.2
-langchain
-flask
+﻿flask
+gunicorn
+sentence-transformers
 pypdf
 python-dotenv
-pinecone[grpc]
+pinecone-client
+langchain
 langchain-pinecone
 langchain_community
 langchain_experimental
 langchain-huggingface
 langchain_groq
-gunicorn
+
 
 
 
