@@ -3,9 +3,6 @@
 
 End-to-End Medical Chatbot Using Generative AI
 
-## 🚀 Deployment Link
-https://medical-chatbot-na1i.onrender.com
-
 ## Overview
 This project is an end-to-end **Medical Chatbot** that utilizes **Generative AI** for answering medical queries. The chatbot integrates **Flask**, **LangChain**, **Pinecone**, and **OpenAI** (Groq API) to provide intelligent, context-aware responses.
 
@@ -63,6 +60,8 @@ print(response.json())
 
 ## Deployment
 The chatbot can be deployed on platforms like **AWS, Google Cloud, or Azure** using Flask and a suitable web server (e.g., Gunicorn).
+## 🚀 Deployment Link
+https://medical-chatbot-na1i.onrender.com
 
 ## License
 This project is licensed under the MIT License.
